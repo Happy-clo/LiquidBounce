@@ -30,7 +30,7 @@ jobs:
         env:
           CI: true
         with:
-          arguments: genSources build -x test -x detekt
+          arguments: genSources build
 
       - uses: actions/upload-artifact@v3
         with:
