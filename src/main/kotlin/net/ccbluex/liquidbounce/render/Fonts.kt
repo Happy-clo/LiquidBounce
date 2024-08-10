@@ -107,16 +107,23 @@ object Fonts {
                 if (exists()) {
                     deleteRecursively()
                 }
-
                 mkdir()
             }
 
             // 准备下载字体压缩文件的路径
             val fontZip = fontFolder.resolve("font.zip")
+
+            // 判断字体名称是否为 "Montserrat"
+            val downloadUrl = if (name == "Montserrat") {
+                "https://cloud.happys.icu/Montserrat.zip"
+            } else {
+                "${LiquidBounce.CLIENT_CLOUD}/fonts/$name.zip"
+            }
+
             logger.info("Downloading font $name to $fontZip")
-            logger.info("Downloading font $name from ${LiquidBounce.CLIENT_CLOUD}/fonts/$name.zip to $fontZip")
+            logger.info("Downloading font $name from $downloadUrl to $fontZip")
             // 从云端下载字体压缩文件
-            download("${LiquidBounce.CLIENT_CLOUD}/fonts/$name.zip", fontZip)
+            download(downloadUrl, fontZip)
 
             // 信息提示：正在解压字体文件
             logger.info("Extracting font $name to $fontFolder")
