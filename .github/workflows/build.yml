@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ nextgen ]
+    branches: [nextgen]
   pull_request:
-    branches: [ nextgen ]
+    branches: [nextgen]
 
 jobs:
   build:
@@ -34,8 +34,8 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-         name: LiquidBounce
-         path: build/libs/*.jar
+          name: LiquidBounce
+          path: build/libs/liquidbounce-0.11.1.jar
   verify-pr:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/nextgen'
