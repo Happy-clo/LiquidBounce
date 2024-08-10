@@ -97,11 +97,12 @@ object Fonts {
         }
 
         /**
-         * Downloads the font from the cloud and extracts it to the filesystem.
+         * 从云端下载字体文件并将其解压到文件系统中。
          */
         private fun downloadFont() {
             logger.info("Downloading required font $name...")
 
+            // 构建字体文件夹的路径，并在存在时删除它，然后创建新文件夹
             val fontFolder = fontsRoot.resolve(name).apply {
                 if (exists()) {
                     deleteRecursively()
@@ -110,14 +111,21 @@ object Fonts {
                 mkdir()
             }
 
+            // 准备下载字体压缩文件的路径
             val fontZip = fontFolder.resolve("font.zip")
             logger.info("Downloading font $name to $fontZip")
+            logger.info("Downloading font $name from ${LiquidBounce.CLIENT_CLOUD}/fonts/$name.zip to $fontZip")
+            // 从云端下载字体压缩文件
             download("${LiquidBounce.CLIENT_CLOUD}/fonts/$name.zip", fontZip)
 
+            // 信息提示：正在解压字体文件
             logger.info("Extracting font $name to $fontFolder")
+            // 解压字体文件到指定文件夹
             extractZip(fontZip, fontFolder)
+            // 删除压缩文件，以释放空间
             fontZip.delete()
 
+            // 信息提示：字体文件下载成功
             logger.info("Successfully downloaded font $name")
         }
 
