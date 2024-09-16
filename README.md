@@ -68,6 +68,8 @@ submit a pull request.
 ## Stats
 
 ![Alt](https://repobeats.axiom.co/api/embed/ad3a9161793c4dfe50934cd4442d25dc3ca93128.svg "Repobeats analytics image")
+> [!CAUTION]  
+> This branch is only for personal development, study and research. Please do not use any attachments directly. The author is not responsible for any problems with the source attachments.
 # Statement
 
 > [!CAUTION]  
